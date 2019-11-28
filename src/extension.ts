@@ -16,7 +16,12 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function readCode(): string {
-  return "TODO: implement";
+  const editor = vscode.window.activeTextEditor;
+  if (!editor) {
+    throw new Error("There's no active editor");
+  }
+
+  return editor.document.getText();
 }
 
 function transform(code: string): string {
