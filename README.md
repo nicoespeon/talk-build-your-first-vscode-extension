@@ -69,6 +69,26 @@ The resulting code is what I versioned here. It already contains a basic behavio
 
 I also recommend you **install the [TypeScript + Webpack Problem Matchers](https://marketplace.visualstudio.com/items?itemName=amodio.tsl-problem-matcher)** to debug the extension.
 
+## Step 2: Read & write code
+
+[VS Code API](https://code.visualstudio.com/api/references/contribution-points) allows us to read from and write to the active editor. It takes some practice to familiarize with the different components, so play around.
+
+In this step, we defined our high-level extension logic:
+
+```ts
+const code = read();
+const transformedCode = transform(code);
+write(transformedCode);
+```
+
+That logic won't change. Now the goal is to implement each function!
+
+We implemented `read()` and `write()` using VS Code API.
+
+Finally, we exposed the command [through a keybinding](https://code.visualstudio.com/api/references/contribution-points#contributes.keybindings). We changed the `package.json` to do so.
+
+ℹ️ Finding a keybinding that will fit everyone is really, really hard. That's fine, users can configure the shortcut themselves. But mention it in your extension's README.
+
 ## ❤️ You liked this workshop and want to build such a tool?
 
 Come contribute to [my actual VS Code extension to automate JS & TS refactorings](https://github.com/nicoespeon/abracadabra).
