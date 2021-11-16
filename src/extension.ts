@@ -8,13 +8,26 @@ export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "my-first-extension.helloWorld",
     () => {
-      vscode.window.showInformationMessage(
-        "Hello from my very first extension!"
-      );
+      const code = read();
+      const transformedCode = transform(code);
+      write(transformedCode);
     }
   );
 
   context.subscriptions.push(disposable);
+}
+
+function read(): string {
+  return "TODO: implement";
+}
+
+function transform(code: string): string {
+  return `${code}
+// Transformed from the extension`;
+}
+
+function write(code: string): void {
+  // TODO: implement
 }
 
 export function deactivate() {}
