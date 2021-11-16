@@ -43,6 +43,32 @@ If you have changed the code and want to go back to a specific checkpoint, you c
 - Stash your changes with `git stash`
 - Create a git branch and commit your work
 
+### Step 1: scaffold code with Yeoman
+
+As instructed in [VS Code docs on creating your first extension](https://code.visualstudio.com/api/get-started/your-first-extension), you don't have to write the boilerplate code yourself.
+
+Instead, you can use [Yeoman](https://yeoman.io/) to do the work for you!
+
+```
+# Install Yeoman globally to use its commands
+npm install -g yo
+
+# Install VS Code specific generator
+npm install -g generator-code
+
+# Scaffold a new VS Code extension
+# Just answer its questions interactively
+yo code
+```
+
+In this worskhop, I picked a "New Extension (TypeScript)" with webpack.
+
+The resulting code is what I versioned here. It already contains a basic behavior: show the user an information message when triggered!
+
+**Run `npm install` to install the new dependencies.**
+
+I also recommend you **install the [TypeScript + Webpack Problem Matchers](https://marketplace.visualstudio.com/items?itemName=amodio.tsl-problem-matcher)** to debug the extension.
+
 ## ❤️ You liked this workshop and want to build such a tool?
 
 Come contribute to [my actual VS Code extension to automate JS & TS refactorings](https://github.com/nicoespeon/abracadabra).
