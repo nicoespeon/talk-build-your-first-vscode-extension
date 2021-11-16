@@ -19,6 +19,14 @@
         "command": "my-first-extension.helloWorld",
         "title": "Hello World"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "my-first-extension.helloWorld",
+        "key": "ctrl+f1",
+        "mac": "cmd+f1",
+        "when": "editorTextFocus"
+      }
     ]
   },
   "scripts": {
