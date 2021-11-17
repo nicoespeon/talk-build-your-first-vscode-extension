@@ -211,6 +211,22 @@ module.exports = function () {
 };
 ```
 
+### Step 5: Package
+
+[The VS Code documentation for packaging & publishing extensions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) is great. Follow their instructions if you want to publish your extension for real 😉
+
+In this workshop, we are not publishing the extension to the Marketplace. But we can still package it so we can install it and share the package around!
+
+To do so, we installed `vsce` locally (so you don't have to install it globally on your machine). Then, we created a dedicated npm script to package the compiled code into a `.vsix` file.
+
+Run `npm run package-vsix` to generate this file!
+
+Once you have it, you can install it into any VS Code instance with:
+
+```
+code --install-extension your-first-vscode-extension.vsix
+```
+
 ## ❤️ You liked this workshop and want to build such a tool?
 
 Come contribute to [my actual VS Code extension to automate JS & TS refactorings](https://github.com/nicoespeon/abracadabra).
