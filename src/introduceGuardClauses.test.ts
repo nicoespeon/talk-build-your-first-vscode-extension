@@ -39,4 +39,31 @@ ${result}
 `
     );
   });
+
+  it("do nothing if IfStatement has no alternate", () => {
+    const code = `
+function simpleScenario() {
+  if (isAlive) {
+    return true;
+  }
+}`;
+
+    const result = transform(code);
+
+    const expectedCode = code;
+    assert(
+      result.trim() === expectedCode.trim(),
+      `
+Expected:
+
+${expectedCode}
+
+---
+
+Actual:
+
+${result}
+`
+    );
+  });
 });
