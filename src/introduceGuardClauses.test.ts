@@ -41,4 +41,28 @@ function simpleScenario() {
 
     assertAreEqual(result, code);
   });
+
+  it("remove redundant else block when alternate is an ExpressionStatement", () => {
+    const code = `
+function simpleScenario() {
+  if (isAlive) {
+    return true;
+  } else
+    doSomething();
+}`;
+
+    const result = transform(code);
+
+    assertAreEqual(
+      result,
+      `
+function simpleScenario() {
+  if (isAlive) {
+    return true;
+  }
+
+  doSomething();
+}`
+    );
+  });
 });
