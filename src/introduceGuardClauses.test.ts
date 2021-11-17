@@ -1,4 +1,4 @@
-import assert = require("assert");
+import { assertAreEqual } from "./asserts";
 import { transform } from "./transform";
 
 describe("Introduce Guard Clauses", () => {
@@ -15,7 +15,9 @@ function simpleScenario() {
 
     const result = transform(code);
 
-    const expectedCode = `
+    assertAreEqual(
+      result,
+      `
 function simpleScenario() {
   if (isAlive) {
     return true;
@@ -23,20 +25,7 @@ function simpleScenario() {
 
   doSomething();
   return false;
-}`;
-    assert(
-      result.trim() === expectedCode.trim(),
-      `
-Expected:
-
-${expectedCode}
-
----
-
-Actual:
-
-${result}
-`
+}`
     );
   });
 
@@ -50,20 +39,6 @@ function simpleScenario() {
 
     const result = transform(code);
 
-    const expectedCode = code;
-    assert(
-      result.trim() === expectedCode.trim(),
-      `
-Expected:
-
-${expectedCode}
-
----
-
-Actual:
-
-${result}
-`
-    );
+    assertAreEqual(result, code);
   });
 });
