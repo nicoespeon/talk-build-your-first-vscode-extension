@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { transform } from "./transform";
 
 export function activate(context: vscode.ExtensionContext) {
   console.log(
@@ -24,11 +25,6 @@ function read(): string {
   }
 
   return editor.document.getText();
-}
-
-function transform(code: string): string {
-  return `${code}
-// Transformed from the extension`;
 }
 
 function write(code: string): void {
