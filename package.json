@@ -1,7 +1,9 @@
 {
-  "name": "talk-build-your-first-vscode-extension",
-  "displayName": "my first extension",
+  "name": "your-first-vscode-extension",
+  "displayName": "Your first VS Code extension",
   "description": "Your first VS Code Extension, doing automated refactorings",
+  "license": "MIT",
+  "repository": "https://github.com/nicoespeon/talk-build-your-first-vscode-extension",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.62.0"
