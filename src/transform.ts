@@ -20,16 +20,15 @@ export function transform(code: string): string {
 }
 
 function unwrapAlternate(path: NodePath<IfStatement>) {
-  if (
-    !isBlockStatement(path.node.alternate) &&
-    !isExpressionStatement(path.node.alternate)
-  ) {
+  const { alternate } = path.node;
+
+  if (!isBlockStatement(alternate) && !isExpressionStatement(alternate)) {
     return;
   }
 
-  const alternateStatements = isExpressionStatement(path.node.alternate)
-    ? [path.node.alternate]
-    : path.node.alternate.body;
+  const alternateStatements = isExpressionStatement(alternate)
+    ? [alternate]
+    : alternate.body;
   path.insertAfter(alternateStatements);
   path.node.alternate = null;
 }
