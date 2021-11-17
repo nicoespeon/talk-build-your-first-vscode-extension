@@ -42,6 +42,24 @@ function simpleScenario() {
     assertAreEqual(result, code);
   });
 
+  it("do nothing if IfStatement has no final ReturnStatement", () => {
+    const code = `
+function simpleScenario() {
+  if (isAlive) {
+    sayHello();
+  } else {
+    doSomething();
+    return false;
+  }
+
+  sayBye();
+}`;
+
+    const result = transform(code);
+
+    assertAreEqual(result, code);
+  });
+
   it("remove redundant else block when alternate is an ExpressionStatement", () => {
     const code = `
 function simpleScenario() {

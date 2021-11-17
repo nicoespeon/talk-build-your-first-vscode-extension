@@ -5,6 +5,7 @@ import {
   IfStatement,
   isBlockStatement,
   isExpressionStatement,
+  isReturnStatement,
 } from "@babel/types";
 
 export function transform(code: string): string {
@@ -13,10 +14,26 @@ export function transform(code: string): string {
   // https://astexplorer.net/
   traverse(ast, {
     IfStatement(path) {
-      unwrapAlternate(path);
+      if (canUnwrapAlternate(path)) {
+        unwrapAlternate(path);
+      }
     },
   });
   return generate(ast).code;
+}
+
+function canUnwrapAlternate(path: NodePath<IfStatement>): boolean {
+  const hasNoSiblingStatement = path.getAllNextSiblings().length === 0;
+
+  const { consequent } = path.node;
+  const finalStatementIsReturn =
+    isBlockStatement(consequent) && isReturnStatement(last(consequent.body));
+
+  return hasNoSiblingStatement || finalStatementIsReturn;
+}
+
+function last<T>(array: T[]): T {
+  return array[array.length - 1];
 }
 
 function unwrapAlternate(path: NodePath<IfStatement>) {
