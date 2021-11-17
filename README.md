@@ -89,6 +89,25 @@ Finally, we exposed the command [through a keybinding](https://code.visualstudio
 
 ℹ️ Finding a keybinding that will fit everyone is really, really hard. That's fine, users can configure the shortcut themselves. But mention it in your extension's README.
 
+## Step 3: Parse code into AST, transform, print AST into code
+
+There are many libraries that can parse JavaScript code into AST. We are using [Babel.js](https://babeljs.io/) in this workshop.
+
+Implementing the `transform()` method really has 3 steps:
+
+1. Parse the code into AST
+2. Traverse the AST, transform it
+3. Print the AST into code again
+
+[AST Explorer](https://astexplorer.net/) is very handy to visualize what the AST looks like for a specific code. Types also help. The rest will come with practice.
+
+In this step, we implemented custom transformations of the code. When triggered, it will:
+
+- Convert any `result` identifier into a `response` one
+- Capitalize all identifiers
+
+To achieve that, we typically mutate the AST nodes or replace them with new ones.
+
 ## ❤️ You liked this workshop and want to build such a tool?
 
 Come contribute to [my actual VS Code extension to automate JS & TS refactorings](https://github.com/nicoespeon/abracadabra).
