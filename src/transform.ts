@@ -1,6 +1,7 @@
 import generate from "@babel/generator";
 import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
+import { identifier } from "@babel/types";
 
 export function transform(code: string): string {
   const ast = parse(code);
@@ -8,7 +9,13 @@ export function transform(code: string): string {
     Identifier(path) {
       // 💡 Use AST Explorer to discover the AST structure:
       // https://astexplorer.net/
-      path.node.name = capitalize(path.node.name);
+
+      if (path.node.name === "result") {
+        const newIdentifier = identifier("response");
+        path.replaceWith(newIdentifier);
+      } else {
+        path.node.name = capitalize(path.node.name);
+      }
     },
   });
   return generate(ast).code;
