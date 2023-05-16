@@ -14,6 +14,8 @@ In this workshop, I'm teaching you to:
 
 ## 🎤 I presented this workshop at
 
+- [DDD EU 2023](https://2023.dddeurope.com/program/lets-craft-automated-refactorings-ourselves/)
+- [ConFoo 2022](https://confoo.ca/en/2022/session/let-s-build-your-own-vs-code-automated-refactorings)
 - [WeAreDevs JS Congress 2021](https://www.wearedevelopers.com/javascript-congress)
 - [Node+JS Interactive 2019](https://www.youtube.com/watch?v=udNV7zPN1H8&list=PLaaTTW4ElDZgudTGGc24KYvq6uq_FFwh_&index=7)
 
